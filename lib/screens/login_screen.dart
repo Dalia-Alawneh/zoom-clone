@@ -16,7 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         Text(
-          "Start or join a meeting",
+          "Start OR join a meeting",
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
         Padding(
