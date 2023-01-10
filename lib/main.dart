@@ -8,14 +8,7 @@ import './utils/colors.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  runApp(MaterialApp(
       title: "Zoom Clone",
       debugShowCheckedModeBanner: false,
       theme:
@@ -24,18 +17,25 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginScreen(),
         '/home': (context) => HomeScreen(),
       },
-      home: StreamBuilder(
+    home: const HomeScreen()));
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return  StreamBuilder(
         stream: AuthMethods().authChanges,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           }
           if (snapshot.hasData) {
+            print('hhh');
             return const HomeScreen();
           }
           return const LoginScreen();
         },
-      ),
     );
   }
 }
