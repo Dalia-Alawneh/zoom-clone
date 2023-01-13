@@ -17,7 +17,7 @@ void main() async {
         '/login': (context) => LoginScreen(),
         '/home': (context) => HomeScreen(),
       },
-    home: const HomeScreen()));
+    home: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
