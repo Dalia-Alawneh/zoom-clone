@@ -11,14 +11,14 @@ class VideoCallScreen extends StatefulWidget {
 
 class _VideoCallScreenState extends State<VideoCallScreen> {
   final AuthMethods _authMethods = AuthMethods();
- late TextEditingController meetingIdController;
- late TextEditingController nameController;
+  late TextEditingController meetingIdController;
+  late TextEditingController nameController;
 
   @override
   void initState() {
     meetingIdController = TextEditingController();
     nameController= TextEditingController(
-        text: _authMethods.user.displayName,);
+      text: _authMethods.user.displayName,);
     super.initState();
   }
   @override
@@ -32,48 +32,48 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
         ),),
         centerTitle: true,
       ),
-    body: Column(
-      children: [
-        SizedBox(
-          height: 60,
-          child: TextField(
- //           controller: meetingIdController,
-            maxLines: 1,
-            textAlign: TextAlign.center,
-            keyboardType: TextInputType.number,
-            decoration: const InputDecoration(
-              fillColor: secondaryBackgroundColor,
-              filled: true,
-              border: InputBorder.none,
-              hintText: 'Room ID',
-              contentPadding: EdgeInsets.fromLTRB(16, 8, 0, 0),
+      body: Column(
+        children: [
+          SizedBox(
+            height: 60,
+            child: TextField(
+              controller: meetingIdController,
+              maxLines: 1,
+              textAlign: TextAlign.center,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                fillColor: secondaryBackgroundColor,
+                filled: true,
+                border: InputBorder.none,
+                hintText: 'Room ID',
+                contentPadding: EdgeInsets.fromLTRB(16, 8, 0, 0),
+              ),
             ),
           ),
-        ),
-        SizedBox(
-          height: 60,
-          child: TextField(
-//            controller: nameController,
-            maxLines: 1,
-            textAlign: TextAlign.center,
-            keyboardType: TextInputType.number,
-            decoration: const InputDecoration(
-              fillColor: secondaryBackgroundColor,
-              filled: true,
-              border: InputBorder.none,
-              hintText: 'Name',
-              contentPadding: EdgeInsets.fromLTRB(16, 8, 0, 0),
+          SizedBox(
+            height: 60,
+            child: TextField(
+              controller: nameController,
+              maxLines: 1,
+              textAlign: TextAlign.center,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                fillColor: secondaryBackgroundColor,
+                filled: true,
+                border: InputBorder.none,
+                hintText: 'Name',
+                contentPadding: EdgeInsets.fromLTRB(16, 8, 0, 0),
+              ),
             ),
           ),
-        ),
-        const SizedBox(height: 20,),
-        InkWell(
-          onTap: null,
-          child: const Padding(padding: EdgeInsets.all(8),),
-        ),
-        const SizedBox(height: 20,)
-      ],
-    ),
+          const SizedBox(height: 20,),
+          InkWell(
+            onTap: null,
+            child: const Padding(padding: EdgeInsets.all(8),),
+          ),
+          const SizedBox(height: 20,)
+        ],
+      ),
     );
   }
 }
