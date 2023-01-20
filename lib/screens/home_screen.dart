@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 void main() {
   runApp(const MyApp());
@@ -23,6 +24,10 @@ class MyApp extends StatelessWidget {
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:zoomclone/utils/dialog_tile.dart';
 import 'package:zoomclone/widgets/home_meeting_button.dart';
+=======
+import 'package:zoomclone/screens/history_meeting_screen.dart';
+import 'package:zoomclone/screens/meeting_screen.dart';
+>>>>>>> wafaa
 import '../utils/colors.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -34,9 +39,18 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _page = 0;
-  onPageChange(int page) {
-    _page = page;
+  onPageChanged(int page) {
+    setState(() {
+      _page = page;
+    });
   }
+
+  List <Widget> pages = [
+    MeetingScreen(),
+    const HistoryMeetingScreen(),
+    const Text('Contacts'),
+    const Text('Settings'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -151,6 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
           )
         ],
       ),
+      body: pages[_page],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: footerColor,
         selectedItemColor: Colors.white,
@@ -158,10 +173,10 @@ class _HomeScreenState extends State<HomeScreen> {
         currentIndex: _page,
         type: BottomNavigationBarType.fixed,
         unselectedFontSize: 14,
-        onTap: onPageChange,
+        onTap: onPageChanged,
         items: const [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.comment_bank), label: 'Meet & Chat'),
+          // BottomNavigationBarItem(
+          //     icon: Icon(Icons.comment_bank), label: 'Meet & Chat'),
           BottomNavigationBarItem(
               icon: Icon(Icons.lock_clock), label: 'Meetings'),
           BottomNavigationBarItem(
@@ -170,41 +185,6 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: Icon(Icons.settings_outlined), label: 'Settings'),
         ],
       ),
-      body: Column(children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            HomeMeetingButton(
-              onPressed: () => {},
-              icon: Icons.videocam,
-              text: 'New Meeting',
-              color: Color.fromARGB(255, 250, 111, 12),
-            ),
-            HomeMeetingButton(
-              onPressed: () => {},
-              icon: Icons.add_box_rounded,
-              text: 'Join Meeting',
-            ),
-            HomeMeetingButton(
-              onPressed: () => {},
-              icon: Icons.calendar_today,
-              text: 'Schedule',
-            ),
-            HomeMeetingButton(
-              onPressed: () => {},
-              icon: Icons.arrow_upward,
-              text: 'Share Screen',
-            ),
-          ],
-        ),
-        Expanded(
-          child: Center(
-              child: Text(
-            'Create/Join Meeting with just a click!',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-          )),
-        ),
-      ]),
     );
 >>>>>>> 8e3e663056ce4a37ad1e68bf9a1d3245b77d5137
   }

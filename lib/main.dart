@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:zoomclone/resources/auth_methods.dart';
 import 'package:zoomclone/screens/home_screen.dart';
 import 'package:zoomclone/screens/login_screen.dart';
+import 'package:zoomclone/screens/meeting_screen.dart';
+import 'package:zoomclone/screens/video_call_screen.dart';
 import './utils/colors.dart';
 
 <<<<<<< HEAD
@@ -23,7 +25,9 @@ void main() async {
       routes: {
         '/login': (context) => LoginScreen(),
         '/home': (context) => HomeScreen(),
+        '/video-call': (context) => VideoCallScreen(),
       },
+<<<<<<< HEAD
       home: AnimatedSplashScreen(
         splash: 'assets/images/loading.png',
         nextScreen: MyApp(),
@@ -34,6 +38,11 @@ void main() async {
         
       )));
 >>>>>>> 8e3e663056ce4a37ad1e68bf9a1d3245b77d5137
+=======
+      home: HomeScreen()
+
+  ));
+>>>>>>> wafaa
 }
 
 class MyApp extends StatelessWidget {
