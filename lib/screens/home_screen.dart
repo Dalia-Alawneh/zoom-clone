@@ -53,6 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       alignment: Alignment.bottomCenter,
                       child: IntrinsicHeight(
                         child: Container(
+                          // height: 200,
                           width: double.maxFinite,
                           clipBehavior: Clip.antiAlias,
                           padding: const EdgeInsets.all(16),
@@ -152,8 +153,8 @@ class _HomeScreenState extends State<HomeScreen> {
         unselectedFontSize: 14,
         onTap: onPageChanged,
         items: const [
-          // BottomNavigationBarItem(
-          //     icon: Icon(Icons.comment_bank), label: 'Meet & Chat'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.comment_bank), label: 'Meet & Chat'),
           BottomNavigationBarItem(
               icon: Icon(Icons.lock_clock), label: 'Meetings'),
           BottomNavigationBarItem(

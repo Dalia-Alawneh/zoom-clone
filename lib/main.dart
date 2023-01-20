@@ -1,9 +1,9 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:zoomclone/resources/auth_methods.dart';
 import 'package:zoomclone/screens/home_screen.dart';
 import 'package:zoomclone/screens/login_screen.dart';
-import 'package:zoomclone/screens/video_call_screen.dart';
 import './utils/colors.dart';
 
 void main() async {
@@ -13,15 +13,21 @@ void main() async {
       title: "Zoom Clone",
       debugShowCheckedModeBanner: false,
       theme:
-      ThemeData.dark().copyWith(scaffoldBackgroundColor: backgroundColor),
+          ThemeData.dark().copyWith(
+            scaffoldBackgroundColor: backgroundColor),
       routes: {
         '/login': (context) => LoginScreen(),
         '/home': (context) => HomeScreen(),
-        '/video-call': (context) => VideoCallScreen(),
       },
-      home: HomeScreen()
-
-  ));
+      home: AnimatedSplashScreen(
+        splash: 'assets/images/loading.png',
+        nextScreen: MyApp(),
+        splashTransition: SplashTransition.fadeTransition,
+        splashIconSize: 60,
+        curve: Curves.easeInOut,
+        backgroundColor: Color.fromARGB(255, 20, 20, 20),
+        
+      )));
 }
 
 class MyApp extends StatelessWidget {
