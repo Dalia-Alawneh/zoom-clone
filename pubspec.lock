@@ -323,13 +323,4 @@ packages:
     source: hosted
     version: "2.1.2"
 sdks:
-<<<<<<< HEAD
-<<<<<<< HEAD
   dart: ">=2.18.4 <3.0.0"
-=======
-  dart: ">=2.18.5 <3.0.0"
-=======
-  dart: ">=2.18.4 <3.0.0"
->>>>>>> wafaa
-  flutter: ">=2.10.0"
->>>>>>> 8e3e663056ce4a37ad1e68bf9a1d3245b77d5137
