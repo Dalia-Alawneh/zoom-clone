@@ -16,7 +16,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   firebase_auth:
   firebase_core:
-  jitsi_meet:
+#  jitsi_meet:
+#  jitsi_meet_wrapper:
+
   flutter:
     sdk: flutter
   

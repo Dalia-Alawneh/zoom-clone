@@ -1,6 +1,9 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.zoomclone">
-   <application
+    <application
+        tools:replace="android:label"
         android:label="zoomclone"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">

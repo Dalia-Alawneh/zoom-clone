@@ -11,8 +11,8 @@ class VideoCallScreen extends StatefulWidget {
 
 class _VideoCallScreenState extends State<VideoCallScreen> {
   final AuthMethods _authMethods = AuthMethods();
-  late TextEditingController meetingIdController;
-  late TextEditingController nameController;
+ late TextEditingController meetingIdController;
+ late TextEditingController nameController;
 
   @override
   void initState() {
@@ -37,7 +37,7 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
         SizedBox(
           height: 60,
           child: TextField(
-            controller: meetingIdController,
+ //           controller: meetingIdController,
             maxLines: 1,
             textAlign: TextAlign.center,
             keyboardType: TextInputType.number,
@@ -53,7 +53,7 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
         SizedBox(
           height: 60,
           child: TextField(
-            controller: nameController,
+//            controller: nameController,
             maxLines: 1,
             textAlign: TextAlign.center,
             keyboardType: TextInputType.number,

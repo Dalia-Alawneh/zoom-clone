@@ -12,8 +12,10 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _page = 0;
-  onPageChange(int page) {
-    _page = page;
+  onPageChanged(int page) {
+    setState(() {
+      _page = page;
+    });
   }
 
   List <Widget> pages = [
@@ -40,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
         currentIndex: _page,
         type: BottomNavigationBarType.fixed,
         unselectedFontSize: 14,
-        onTap: onPageChange,
+        onTap: onPageChanged,
         items: const [
           // BottomNavigationBarItem(
           //     icon: Icon(Icons.comment_bank), label: 'Meet & Chat'),
