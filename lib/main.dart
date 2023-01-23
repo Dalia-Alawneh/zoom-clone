@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:zoomclone/resources/auth_methods.dart';
 import 'package:zoomclone/screens/home_screen.dart';
 import 'package:zoomclone/screens/login_screen.dart';
+import 'package:zoomclone/screens/settings_screen.dart';
 import './utils/colors.dart';
 
 void main() async {

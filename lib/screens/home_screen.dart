@@ -1,11 +1,14 @@
-
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:zoomclone/utils/dialog_tile.dart';
+import 'package:zoomclone/screens/contacts_screen.dart';
+import 'package:zoomclone/screens/settings_screen.dart';
+import 'package:zoomclone/widgets/dialog_tile.dart';
 import 'package:zoomclone/widgets/home_meeting_button.dart';
 import 'package:zoomclone/screens/history_meeting_screen.dart';
 import 'package:zoomclone/screens/meeting_screen.dart';
 import '../utils/colors.dart';
 import 'package:flutter/material.dart';
+
+import '../widgets/divline.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -22,11 +25,11 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  List <Widget> pages = [
+  List<Widget> pages = [
     MeetingScreen(),
     const HistoryMeetingScreen(),
-    const Text('Contacts'),
-    const Text('Settings'),
+    const ContactsScreen(),
+    const Settings(),
   ];
 
   @override
@@ -91,21 +94,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                       DialogTile(
                                           text: 'Start Meeting',
                                           icon: Icons.calendar_month),
-                                      Divider(
-                                        height: 30,
-                                        thickness: 0.4,
-                                        color:
-                                            Color.fromARGB(40, 143, 143, 143),
-                                      ),
+                                      DivLine(),
                                       DialogTile(
                                           text: 'Send Invitation',
                                           icon: Icons.share),
-                                      Divider(
-                                        height: 30,
-                                        thickness: 0.4,
-                                        color:
-                                            Color.fromARGB(40, 143, 143, 143),
-                                      ),
+                                      DivLine(),
                                       DialogTile(
                                           text: 'Edit Meeting',
                                           icon: Icons.edit_outlined),
