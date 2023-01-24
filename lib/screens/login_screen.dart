@@ -13,6 +13,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final AuthMethods _authMethods = AuthMethods();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,8 +28,11 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         CustomButton(
           text: 'Google Sign In',
-          onPressed: (){
-            //google sign in with firebase 
+          onPressed: () async {
+            bool res = await _authMethods.SignInWithGoogle(context);
+            if (res) {
+              Navigator.pushNamed(context, '/home');
+            }
           },
         )
       ]),
