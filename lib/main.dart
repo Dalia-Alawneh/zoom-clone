@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:zoomclone/resources/auth_methods.dart';
 import 'package:zoomclone/screens/home_screen.dart';
 import 'package:zoomclone/screens/login_screen.dart';
-import 'package:zoomclone/screens/settings_screen.dart';
+import 'package:zoomclone/screens/start_new_meeting.dart';
 import './utils/colors.dart';
+import 'screens/schedual_meeting_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,8 +15,7 @@ void main() async {
       title: "Zoom Clone",
       debugShowCheckedModeBanner: false,
       theme:
-          ThemeData.dark().copyWith(
-            scaffoldBackgroundColor: backgroundColor),
+          ThemeData.dark().copyWith(scaffoldBackgroundColor: backgroundColor),
       routes: {
         '/login': (context) => LoginScreen(),
         '/home': (context) => HomeScreen(),
@@ -27,7 +27,6 @@ void main() async {
         splashIconSize: 60,
         curve: Curves.easeInOut,
         backgroundColor: Color.fromARGB(255, 20, 20, 20),
-        
       )));
 }
 
@@ -45,7 +44,7 @@ class MyApp extends StatelessWidget {
           print('hhh');
           return const HomeScreen();
         }
-        return const LoginScreen();
+        return const StartAMeetingScreen();
       },
     );
   }

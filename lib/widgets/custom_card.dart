@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class CustomCard extends StatelessWidget {
   const CustomCard({
-    Key? key,required this.icon, required this.text
+    Key? key,this.icon, required this.text
   }) : super(key: key);
   final text;
   final icon;
