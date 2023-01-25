@@ -46,7 +46,7 @@ class _TeamChatScreenState extends State<TeamChatScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: [Image.asset('assests/images/chat.png')],
+              children: [Image.asset('assets/images/chat.png')],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -68,6 +68,7 @@ class _TeamChatScreenState extends State<TeamChatScreen> {
             )
           ],
         ),
+        
       ),
     );
   }

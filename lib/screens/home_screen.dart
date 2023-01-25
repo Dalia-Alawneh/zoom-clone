@@ -1,6 +1,7 @@
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:zoomclone/screens/contacts_screen.dart';
 import 'package:zoomclone/screens/settings_screen.dart';
+import 'package:zoomclone/screens/team_chat.dart';
 import 'package:zoomclone/widgets/dialog_tile.dart';
 import 'package:zoomclone/widgets/home_meeting_button.dart';
 import 'package:zoomclone/screens/history_meeting_screen.dart';
@@ -27,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Widget> pages = [
     MeetingScreen(),
-    const HistoryMeetingScreen(),
+    TeamChatScreen(),
     const ContactsScreen(),
     const Settings(),
   ];

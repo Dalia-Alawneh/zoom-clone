@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:zoomclone/resources/jitsi_meet_methods.dart';
+import 'package:zoomclone/screens/schedual_meeting_screen.dart';
 import '../widgets/home_meeting_button.dart';
 
 class MeetingScreen extends StatelessWidget {
@@ -33,7 +34,7 @@ class MeetingScreen extends StatelessWidget {
             text: 'Join Meeting',
           ),
           HomeMeetingButton(
-            onPressed: () => {},
+            onPressed: () => {Navigator.push(context, MaterialPageRoute(builder: (context)=>ScheduleMeetingScreen()))},
             icon: Icons.calendar_today,
             text: 'Schedule',
           ),

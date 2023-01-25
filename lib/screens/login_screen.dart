@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:zoomclone/resources/auth_methods.dart';
+import 'package:zoomclone/utils/colors.dart';
 import 'package:zoomclone/widgets/custom_button.dart';
   
 class LoginScreen extends StatefulWidget {
@@ -34,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
             if (res) {
               Navigator.pushNamed(context, '/home');
             }
-          },
+          }, bcolor: buttonColor, textBColor: Colors.white,
         )
       ]),
     );
