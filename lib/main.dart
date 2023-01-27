@@ -2,9 +2,12 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:zoomclone/resources/auth_methods.dart';
+import 'package:zoomclone/screens/edit_meeting_screen.dart';
+import 'package:zoomclone/screens/edit_name.dart';
 import 'package:zoomclone/screens/home_screen.dart';
 import 'package:zoomclone/screens/login_screen.dart';
 import 'package:zoomclone/screens/start_new_meeting.dart';
+import 'package:zoomclone/screens/update_password.dart';
 import './utils/colors.dart';
 import 'screens/schedual_meeting_screen.dart';
 
@@ -42,9 +45,9 @@ class MyApp extends StatelessWidget {
         }
         if (snapshot.hasData) {
           print('hhh');
-          return const HomeScreen();
+          return const UpdatePassword();
         }
-        return const StartAMeetingScreen();
+        return const LoginScreen();
       },
     );
   }

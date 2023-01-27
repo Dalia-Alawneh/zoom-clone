@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zoomclone/utils/colors.dart';
 import 'package:zoomclone/widgets/custom_adaptive.dart';
+import 'package:zoomclone/widgets/custom_textfield.dart';
 import '../widgets/custom_card2.dart';
 import '../widgets/meeting_option.dart';
 
@@ -54,26 +55,7 @@ class _ScheduleMeetingScreenState extends State<ScheduleMeetingScreen> {
       ),
       body: ListView(
         children: [
-          SizedBox(
-            height: 60,
-            child: TextField(
-              //controller: meetingIdController,
-              maxLines: 1,
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                fillColor: secondaryBackgroundColor,
-                filled: true,
-                border: InputBorder.none,
-                hintStyle: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 13,
-                ),
-                hintText: " Mohamed Mansour's Zoom Meeting",
-                // suffixIcon: Icon(Icons.arrow_drop_down),
-                contentPadding: EdgeInsets.fromLTRB(16, 0, 0, 0),
-              ),
-            ),
-          ),
+          CustomTextField(hintText: " Mohamed Mansour's Zoom Meeting"),
           SizedBox(
             height: 15,
           ),

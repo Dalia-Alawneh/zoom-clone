@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zoomclone/screens/profile.dart';
 import 'package:zoomclone/utils/colors.dart';
+import 'package:zoomclone/widgets/appbar.dart';
 import 'package:zoomclone/widgets/divline.dart';
+import '../utils/constants.dart';
 import '../widgets/custom_card.dart';
 import '../widgets/custom_text.dart';
 import 'dart:ui' as ui;
@@ -13,11 +16,17 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
-  final String name = "Dalia Alawneh";
+  final String name = "Dalia Alawneh ";
   final String email = "example@gmail.com";
   final String status = "LICENCED";
+
   @override
   Widget build(BuildContext context) {
+    checkStatus = false;
+    colorForStatus = false;
+    setState(() {
+      MyAppbar().actions = [];
+    });
     return Scaffold(
       body: ListView(
         padding: EdgeInsets.symmetric(horizontal: 20),
@@ -28,6 +37,8 @@ class _SettingsState extends State<Settings> {
                   borderRadius: BorderRadius.circular(20),
                   color: Color.fromARGB(40, 143, 143, 143)),
               child: GestureDetector(
+                onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Profile())),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -48,7 +59,11 @@ class _SettingsState extends State<Settings> {
                           children: [
                             Row(
                               children: [
-                                Text(name, style: TextStyle(fontSize: 16)),
+                                Text(
+                                  name,
+                                  style: TextStyle(fontSize: 16),
+                                  textAlign: TextAlign.left,
+                                ),
                                 Text('  $status',
                                     style: TextStyle(
                                         fontSize: 12,
@@ -57,7 +72,7 @@ class _SettingsState extends State<Settings> {
                                             Offset(5, 25),
                                             Offset(10, 5),
                                             <Color>[
-                                              Color.fromARGB(255, 221, 31, 31),
+                                              Color.fromARGB(255, 215, 221, 31),
                                               Colors.cyan,
                                             ],
                                           )))
@@ -98,9 +113,28 @@ class _SettingsState extends State<Settings> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Color.fromARGB(40, 143, 143, 143)),
-              child: CustomCard(
-                text: "Whiteboard",
-                icon: Icons.check_box_outline_blank_rounded,
+              child: Column(
+                children: [
+                  CustomCard(
+                    text: "Mail",
+                    icon: Icons.mail_outline,
+                  ),
+                  DivLine(),
+                  CustomCard(
+                    text: "Calendar",
+                    icon: Icons.calendar_today_outlined,
+                  ),
+                  DivLine(),
+                  CustomCard(
+                    text: "Whiteboard",
+                    icon: Icons.check_box_outline_blank_rounded,
+                  ),
+                  DivLine(),
+                  CustomCard(
+                    text: "Apps",
+                    icon: Icons.apps,
+                  ),
+                ],
               )),
           SizedBox(
             height: 30,
