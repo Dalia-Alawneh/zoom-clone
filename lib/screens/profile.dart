@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:zoomclone/screens/delete_account.dart';
 import 'package:zoomclone/screens/edit_name.dart';
+import 'package:zoomclone/screens/update_password.dart';
 import 'package:zoomclone/widgets/basic_card.dart';
 import 'package:zoomclone/widgets/custom_card.dart';
 import 'package:zoomclone/widgets/divline.dart';
@@ -49,6 +51,13 @@ class _ProfileState extends State<Profile> {
               child: Column(
                 children: [
                   CustomCard2(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DeleteAccount(),
+                          ));
+                    },
                     text: 'Account',
                     secondaryText: 'example@gmail.com',
                   ),
@@ -88,6 +97,13 @@ class _ProfileState extends State<Profile> {
                   ),
                   DivLine(),
                   CustomCard2(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => UpdatePassword(),
+                          ));
+                    },
                     text: "Update Password",
                     secondaryText: "",
                   ),

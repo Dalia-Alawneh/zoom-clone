@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
         }
         if (snapshot.hasData) {
           print('hhh');
-          return const UpdatePassword();
+          return const HomeScreen();
         }
         return const LoginScreen();
       },
