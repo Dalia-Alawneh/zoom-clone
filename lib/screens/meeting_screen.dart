@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:zoomclone/resources/jitsi_meet_methods.dart';
 import 'package:zoomclone/screens/schedual_meeting_screen.dart';
+import 'package:zoomclone/screens/video_call_screen.dart';
 import 'package:zoomclone/widgets/divline.dart';
 import '../widgets/home_meeting_button.dart';
 
@@ -39,7 +40,9 @@ class _MeetingScreenState extends State<MeetingScreen> {
             color: Color.fromARGB(255, 250, 111, 12),
           ),
           HomeMeetingButton(
-            onPressed: () => {},
+            onPressed: () => {
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>VideoCallScreen()))
+            },
             icon: Icons.add_box_rounded,
             text: 'Join Meeting',
           ),
