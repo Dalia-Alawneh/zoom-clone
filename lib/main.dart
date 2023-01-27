@@ -1,4 +1,5 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:camera/camera.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:zoomclone/resources/auth_methods.dart';
@@ -7,15 +8,20 @@ import 'package:zoomclone/screens/edit_name.dart';
 import 'package:zoomclone/screens/home_screen.dart';
 import 'package:zoomclone/screens/login_screen.dart';
 import 'package:zoomclone/screens/start_new_meeting.dart';
+import 'package:zoomclone/screens/create_new_meeting.dart';
 import 'package:zoomclone/screens/update_password.dart';
 import './utils/colors.dart';
 import 'screens/schedual_meeting_screen.dart';
 
-void main() async {
+late List<CameraDescription> cameras;
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  cameras = await availableCameras();
+
   await Firebase.initializeApp();
   runApp(MaterialApp(
-      title: "Zoom Clone",
+      title: "Zoom",
       debugShowCheckedModeBanner: false,
       theme:
           ThemeData.dark().copyWith(scaffoldBackgroundColor: backgroundColor),
@@ -44,7 +50,6 @@ class MyApp extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         }
         if (snapshot.hasData) {
-          print('hhh');
           return const HomeScreen();
         }
         return const LoginScreen();

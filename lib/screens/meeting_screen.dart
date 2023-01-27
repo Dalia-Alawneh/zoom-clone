@@ -1,19 +1,15 @@
 import 'dart:math';
-
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:zoomclone/resources/jitsi_meet_methods.dart';
+import 'package:zoomclone/screens/create_new_meeting.dart';
 import 'package:zoomclone/screens/schedual_meeting_screen.dart';
 import 'package:zoomclone/widgets/divline.dart';
+import '../main.dart';
 import '../widgets/home_meeting_button.dart';
 
 class MeetingScreen extends StatefulWidget {
   MeetingScreen({Key? key}) : super(key: key);
 
-  @override
-  State<MeetingScreen> createState() => _MeetingScreenState();
-}
-
-class _MeetingScreenState extends State<MeetingScreen> {
   //final JitsiMeetMethods _jitsiMeetMethods = JitsiMeetMethods();
   createNewMeeting() async {
     var random = Random();
@@ -22,10 +18,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
     //   roomName: roomName, isAudioMuted: true, isVideoMuted: true);
   }
 
-  bool isDisabled = true;
-
   var _color = Colors.grey;
-
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -33,7 +26,12 @@ class _MeetingScreenState extends State<MeetingScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           HomeMeetingButton(
-            onPressed: createNewMeeting,
+            onPressed: () async {
+              await availableCameras().then((value) => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => CreateNewMeeting(cameras: value))));
+            },
             icon: Icons.videocam,
             text: 'New Meeting',
             color: Color.fromARGB(255, 250, 111, 12),
@@ -68,9 +66,9 @@ class _MeetingScreenState extends State<MeetingScreen> {
                         Form(
                           child: TextFormField(
                             onChanged: (value) {
-                              setState(() {
-                                _color = Colors.blue;
-                              });
+                              // setState(() {
+                              //   _color = Colors.blue;
+                              // });
                             },
                             decoration: InputDecoration(
                                 filled: true,
@@ -159,5 +157,11 @@ class _MeetingScreenState extends State<MeetingScreen> {
         )),
       ),
     ]);
+  }
+
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    throw UnimplementedError();
   }
 }
