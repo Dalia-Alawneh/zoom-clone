@@ -20,7 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         Text(
-          "Start or join a meeting",
+          "Start OR222 join a meeting",
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
         Padding(
@@ -31,7 +31,6 @@ class _LoginScreenState extends State<LoginScreen> {
           text: 'Google Sign In',
           onPressed: () async {
             bool res = await _authMethods.SignInWithGoogle(context);
-
             if (res) {
               Navigator.pushNamed(context, '/home');
             }

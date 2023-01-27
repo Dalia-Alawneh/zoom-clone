@@ -5,3 +5,11 @@ const buttonColor = Color.fromRGBO(14, 114, 236, 1);
 const footerColor = Color.fromRGBO(26, 26, 26, 1);
 const secondaryBackgroundColor = Color.fromRGBO(46, 46, 46, 1);
 const textColor =Color.fromARGB(255, 200, 200, 200);
+
+
+const Color headerAndFooter = Color(0xFF242424);
+const Color black = Color(0xFF000000);
+const Color primary = Color(0xFF0e72ec);
+const Color red = Color(0xFFd72c21);
+const Color green = Color(0xFF22d759);
+const Color grey = Color(0xFFcfcfcf);

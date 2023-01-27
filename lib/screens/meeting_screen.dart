@@ -1,21 +1,25 @@
 import 'dart:math';
-
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:zoomclone/resources/jitsi_meet_methods.dart';
+import 'package:zoomclone/screens/create_new_meeting.dart';
 import 'package:zoomclone/screens/schedual_meeting_screen.dart';
+import 'package:zoomclone/widgets/divline.dart';
+import '../main.dart';
 import '../widgets/home_meeting_button.dart';
 
-class MeetingScreen extends StatelessWidget {
+class MeetingScreen extends StatefulWidget {
   MeetingScreen({Key? key}) : super(key: key);
+  @override
+  State<MeetingScreen> createState() => _MeetingScreenState();
+}
 
-  //final JitsiMeetMethods _jitsiMeetMethods = JitsiMeetMethods();
+class _MeetingScreenState extends State<MeetingScreen> {
   createNewMeeting() async {
-    var random= Random();
-    String roomName = (random.nextInt(10000000) +10000000).toString();
-   // _jitsiMeetMethods.createNewMeeting(
-     //   roomName: roomName, isAudioMuted: true, isVideoMuted: true);
+    var random = Random();
+    String roomName = (random.nextInt(10000000) + 10000000).toString();
   }
 
+  var _color = Colors.grey;
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -23,7 +27,12 @@ class MeetingScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           HomeMeetingButton(
-            onPressed: createNewMeeting,
+            onPressed: () async {
+              await availableCameras().then((value) => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => CreateNewMeeting(cameras: value))));
+            },
             icon: Icons.videocam,
             text: 'New Meeting',
             color: Color.fromARGB(255, 250, 111, 12),
@@ -34,12 +43,108 @@ class MeetingScreen extends StatelessWidget {
             text: 'Join Meeting',
           ),
           HomeMeetingButton(
-            onPressed: () => {Navigator.push(context, MaterialPageRoute(builder: (context)=>ScheduleMeetingScreen()))},
+            onPressed: () => {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ScheduleMeetingScreen()))
+            },
             icon: Icons.calendar_today,
             text: 'Schedule',
           ),
           HomeMeetingButton(
-            onPressed: () => {},
+            onPressed: () => {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                      title: Text(
+                        "Share Screen",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      actions: [
+                        Form(
+                          child: TextFormField(
+                            onChanged: (value) {
+                              setState(() {
+                                _color = Colors.blue;
+                              });
+                            },
+                            decoration: InputDecoration(
+                                filled: true,
+                                fillColor: Colors.black38,
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                    borderSide: BorderSide(
+                                        color: Colors.white, width: 1)),
+                                contentPadding:
+                                    EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                hintText: "Sharing Key or Meeting ID"),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Container(
+                                padding: EdgeInsets.only(top: 15, bottom: 5),
+                                decoration: BoxDecoration(
+                                  border: Border(
+                                    right: BorderSide(
+                                        color: Colors.white,
+                                        width: 1,
+                                        style: BorderStyle.solid),
+                                    top: BorderSide(
+                                        color: Colors.white,
+                                        width: 1,
+                                        style: BorderStyle.solid),
+                                  ),
+                                ),
+                                child: GestureDetector(
+                                    onTap: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text(
+                                      "Cancel",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(color: Colors.blue),
+                                    )),
+                              ),
+                            ),
+                            Expanded(
+                              child: Container(
+                                padding: EdgeInsets.only(top: 15, bottom: 5),
+                                decoration: BoxDecoration(
+                                  border: Border(
+                                    top: BorderSide(
+                                        color: Colors.white,
+                                        width: 1,
+                                        style: BorderStyle.solid),
+                                  ),
+                                ),
+                                child: GestureDetector(
+                                    onTap: () {},
+                                    child: Text(
+                                      "Ok",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(color: _color),
+                                    )),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                      content: Text(
+                          textAlign: TextAlign.center,
+                          "Enter Sharing Key or Meeting ID to share to a Zoom Room",
+                          style: TextStyle(fontSize: 13)));
+                },
+              )
+            },
             icon: Icons.arrow_upward,
             text: 'Share Screen',
           ),
@@ -48,9 +153,9 @@ class MeetingScreen extends StatelessWidget {
       Expanded(
         child: Center(
             child: Text(
-              'Create/Join Meeting with just a click!',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-            )),
+          'Create/Join Meeting with just a click!',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+        )),
       ),
     ]);
   }
