@@ -9,13 +9,14 @@ import '../widgets/home_meeting_button.dart';
 
 class MeetingScreen extends StatefulWidget {
   MeetingScreen({Key? key}) : super(key: key);
+  @override
+  State<MeetingScreen> createState() => _MeetingScreenState();
+}
 
-  //final JitsiMeetMethods _jitsiMeetMethods = JitsiMeetMethods();
+class _MeetingScreenState extends State<MeetingScreen> {
   createNewMeeting() async {
     var random = Random();
     String roomName = (random.nextInt(10000000) + 10000000).toString();
-    // _jitsiMeetMethods.createNewMeeting(
-    //   roomName: roomName, isAudioMuted: true, isVideoMuted: true);
   }
 
   var _color = Colors.grey;
@@ -66,9 +67,9 @@ class MeetingScreen extends StatefulWidget {
                         Form(
                           child: TextFormField(
                             onChanged: (value) {
-                              // setState(() {
-                              //   _color = Colors.blue;
-                              // });
+                              setState(() {
+                                _color = Colors.blue;
+                              });
                             },
                             decoration: InputDecoration(
                                 filled: true,
@@ -157,11 +158,5 @@ class MeetingScreen extends StatefulWidget {
         )),
       ),
     ]);
-  }
-
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
   }
 }
