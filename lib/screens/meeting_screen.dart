@@ -1,20 +1,13 @@
 import 'dart:math';
-
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:zoomclone/resources/jitsi_meet_methods.dart';
+import 'package:zoomclone/screens/create_new_meeting.dart';
 import 'package:zoomclone/screens/schedual_meeting_screen.dart';
+import '../main.dart';
 import '../widgets/home_meeting_button.dart';
 
 class MeetingScreen extends StatelessWidget {
   MeetingScreen({Key? key}) : super(key: key);
-
-  //final JitsiMeetMethods _jitsiMeetMethods = JitsiMeetMethods();
-  createNewMeeting() async {
-    var random= Random();
-    String roomName = (random.nextInt(10000000) +10000000).toString();
-   // _jitsiMeetMethods.createNewMeeting(
-     //   roomName: roomName, isAudioMuted: true, isVideoMuted: true);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +16,10 @@ class MeetingScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           HomeMeetingButton(
-            onPressed: createNewMeeting,
+            onPressed: () async {
+              await availableCameras().then((value) => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CreateNewMeeting(cameras: value))));
+            },
             icon: Icons.videocam,
             text: 'New Meeting',
             color: Color.fromARGB(255, 250, 111, 12),
@@ -34,7 +30,12 @@ class MeetingScreen extends StatelessWidget {
             text: 'Join Meeting',
           ),
           HomeMeetingButton(
-            onPressed: () => {Navigator.push(context, MaterialPageRoute(builder: (context)=>ScheduleMeetingScreen()))},
+            onPressed: () => {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ScheduleMeetingScreen()))
+            },
             icon: Icons.calendar_today,
             text: 'Schedule',
           ),
@@ -48,9 +49,9 @@ class MeetingScreen extends StatelessWidget {
       Expanded(
         child: Center(
             child: Text(
-              'Create/Join Meeting with just a click!',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-            )),
+          'Create/Join Meeting with just a click!',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+        )),
       ),
     ]);
   }
