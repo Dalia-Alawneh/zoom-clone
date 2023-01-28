@@ -5,8 +5,8 @@ import '../utils/colors.dart';
 import '../widgets/custom_card.dart';
 import '../widgets/divline.dart';
 
-class Contacts extends StatelessWidget {
-  const Contacts({Key? key}) : super(key: key);
+class Contact extends StatelessWidget {
+  const Contact({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

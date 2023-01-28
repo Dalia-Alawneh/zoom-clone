@@ -1,5 +1,14 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:zoomclone/screens/about_screen.dart';
+import 'package:zoomclone/screens/chat_screen.dart';
+import 'package:zoomclone/screens/contacts.dart';
+import 'package:zoomclone/screens/general_screen.dart';
+import 'package:zoomclone/screens/contacts_screen.dart';
+import 'package:zoomclone/screens/meeting_screen.dart';
+import 'package:zoomclone/screens/meeting_setting_screen.dart';
 import 'package:zoomclone/screens/profile.dart';
+import 'package:zoomclone/screens/siri_screen.dart';
 import 'package:zoomclone/utils/colors.dart';
 import 'package:zoomclone/widgets/appbar.dart';
 import 'package:zoomclone/widgets/divline.dart';
@@ -16,10 +25,9 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
-  final String name = "Dalia Alawneh ";
-  final String email = "example@gmail.com";
+  var name = FirebaseAuth.instance.currentUser!.displayName;
+  var email = FirebaseAuth.instance.currentUser!.email ?? "example@gmail.com";
   final String status = "LICENCED";
-
   @override
   Widget build(BuildContext context) {
     checkStatus = false;
@@ -60,7 +68,7 @@ class _SettingsState extends State<Settings> {
                             Row(
                               children: [
                                 Text(
-                                  name,
+                                  name ?? "example user",
                                   style: TextStyle(fontSize: 16),
                                   textAlign: TextAlign.left,
                                 ),
@@ -88,7 +96,7 @@ class _SettingsState extends State<Settings> {
                                     width: 28,
                                   ),
                                 ),
-                                Text('  $email')
+                                Text('  ' + email)
                               ],
                             )
                           ],
@@ -150,21 +158,31 @@ class _SettingsState extends State<Settings> {
             child: Column(
               children: [
                 CustomCard(
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => MeetingSettingScreen())),
                   text: "Meetings",
                   icon: Icons.lock_clock_outlined,
                 ),
                 DivLine(),
                 CustomCard(
+                  onTap: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Contact())),
                   text: "Contacts",
                   icon: Icons.contacts_outlined,
                 ),
                 DivLine(),
                 CustomCard(
+                  onTap: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ChatScreen())),
                   text: "Chat",
                   icon: Icons.chat_bubble_outline_outlined,
                 ),
                 DivLine(),
                 CustomCard(
+                  onTap: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => GeneralScreen())),
                   text: "General",
                   icon: Icons.settings_outlined,
                 ),
@@ -185,6 +203,8 @@ class _SettingsState extends State<Settings> {
             child: Column(
               children: [
                 CustomCard(
+                  onTap: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SiriScreen())),
                   text: "Siri Shortcuts",
                   icon: Icons.record_voice_over,
                 ),
@@ -195,6 +215,8 @@ class _SettingsState extends State<Settings> {
                 ),
                 DivLine(),
                 CustomCard(
+                  onTap: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => AboutScreen())),
                   text: "About",
                   icon: Icons.info_outline,
                 ),

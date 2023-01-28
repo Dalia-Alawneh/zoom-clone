@@ -21,15 +21,23 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   // const Profile({super.key});
   final String status = "licensed";
-
-  String _displayName = "example";
-
+  @override
+  void initState() {
+    // TODO: implement initState
+    FirebaseAuth.instance.currentUser!.reload();
+    super.initState();
+  }
+  var displayName = FirebaseAuth.instance.currentUser!.displayName;
+  var email = FirebaseAuth.instance.currentUser!.email;
   String _profilePhoto = "assets/images/default.webp";
 
   bool enableFace = true;
 
   @override
   Widget build(BuildContext context) {
+    setState(() {
+      
+    });
     checkStatus = true;
     colorForStatus = true;
     var _color = Color.fromARGB(40, 143, 143, 143);
@@ -59,14 +67,14 @@ class _ProfileState extends State<Profile> {
                           ));
                     },
                     text: 'Account',
-                    secondaryText: 'example@gmail.com',
+                    secondaryText: email??'example@gmail.com',
                   ),
                   DivLine(),
                   CustomCard2(
                       onTap: () => Navigator.push(context,
                           MaterialPageRoute(builder: (context) => EditName())),
                       text: 'Display Name',
-                      secondaryText: _displayName),
+                      secondaryText: displayName ?? "example"),
                   DivLine(),
                   GestureDetector(
                     child: Row(

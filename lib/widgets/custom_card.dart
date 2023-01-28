@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 import '../utils/constants.dart';
 
 class CustomCard extends StatelessWidget {
-  const CustomCard({Key? key, this.icon, required this.text}) : super(key: key);
+  CustomCard({Key? key, this.icon, required this.text, this.onTap})
+      : super(key: key);
   final text;
   final icon;
+  VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: onTap,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

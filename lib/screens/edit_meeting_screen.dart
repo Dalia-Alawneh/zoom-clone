@@ -45,6 +45,8 @@ class _EditMeetingState extends State<EditMeeting> {
           text: "PERSONAL MEETING ID (PMI)",
         ),
         CustomTextField(
+          isReadOnly: false,
+
           hintText: "Personal ID",
           initialVal: _id,
         ),
