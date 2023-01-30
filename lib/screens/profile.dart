@@ -82,7 +82,7 @@ class _ProfileState extends State<Profile> {
                       children: [
                         Text(
                           'Profile Photo',
-                          style: TextStyle(fontSize: 16),
+                          style: TextStyle(fontSize: 15),
                         ),
                         Row(
                           children: [

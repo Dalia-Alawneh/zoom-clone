@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:zoomclone/screens/profile.dart';
 import 'package:zoomclone/widgets/custom_text.dart';
 import 'package:zoomclone/widgets/custom_textfield.dart';
+import 'package:zoomclone/widgets/custom_textfield2.dart';
 
 import '../utils/colors.dart';
 
@@ -17,14 +18,22 @@ class _EditNameState extends State<EditName> {
   var _auth = FirebaseAuth.instance;
   final GlobalKey<NavigatorState>? navigatorKey = GlobalKey<NavigatorState>();
   var user = FirebaseAuth.instance.currentUser;
+  void callback() {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     String? username = _auth.currentUser!.displayName;
     dynamic name = username!.split(' ');
-    print(name);
+    // print(fNameController.text + " " + lNameController.text);
     String fName = name[0] ?? "example";
     String lName = name[1] ?? "example";
-    String displayName = 'Dodd Hisham';
+    print(name);
+    TextEditingController fNameController = TextEditingController(text: fName);
+    TextEditingController lNameController = TextEditingController(text: lName);
+    print(lName);
+    String displayName = '$fName $lName';
     return Scaffold(
       appBar: AppBar(
         backgroundColor: backgroundColor,
@@ -36,16 +45,24 @@ class _EditNameState extends State<EditName> {
         actions: [
           TextButton(
               onPressed: () async {
-                user!.updateDisplayName(displayName);
+                // print(fNameController.text + " " + lNameController.text);
                 await user!.reload();
-                
-                // Navigator.push(context, MaterialPageRoute(builder: (context){
+                user!.updateDisplayName(
+                    '${fNameController.text} ${lNameController.text}');
+                await user!.reload();
+                callback();
+                Navigator.popAndPushNamed(context, 'profile').then((value) {
+                  user!.reload();
+                  // return Center(
+                  //   child: CircularProgressIndicator(),
+                  // );
+                });
                 //   return Profile();
                 // }));
               },
               child: Text(
                 "Save",
-                style: TextStyle(color: Colors.white, fontSize: 17),
+                style: TextStyle(color: Colors.white, fontSize: 15),
               ))
         ],
       ),
@@ -53,41 +70,31 @@ class _EditNameState extends State<EditName> {
         CustomText(
           text: "FIRST NAME",
         ),
-        CustomTextField(
+        CustomTextField2(
+          controller: fNameController,
           isReadOnly: false,
-          onChanged: (value) {
-            setState(() {
-              fName = value;
-            });
-          },
-          hintText: "First Name",
-          initialVal: fName,
+          onChanged: (value) {},
+          hintText: "FIRST NAME",
+          // initialVal: fName,
         ),
         CustomText(
           text: "LAST NAME",
         ),
-        CustomTextField(
+        CustomTextField2(
+          controller: lNameController,
           isReadOnly: false,
-          onChanged: (value) {
-            setState(() {
-              lName = value;
-            });
-          },
-          hintText: "Last Name",
-          initialVal: lName,
+          onChanged: (value) {},
+          hintText: "LAST NAME",
+          // initialVal: lName,
         ),
         CustomText(
           text: "DISPLAY NAME",
         ),
+        // Text(lName),
         CustomTextField(
           isReadOnly: true,
-          onChanged: (value) {
-            setState(() {
-              displayName = value;
-            });
-          },
           hintText: "Display Name",
-          initialVal: displayName,
+          initialVal: '$fName $lName',
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),

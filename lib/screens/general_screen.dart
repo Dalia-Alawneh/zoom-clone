@@ -5,8 +5,6 @@ import 'package:zoomclone/widgets/arrow_card.dart';
 import 'package:zoomclone/widgets/custom_adaptive.dart';
 import 'package:zoomclone/widgets/custom_text.dart';
 import 'package:zoomclone/widgets/custom_textfield.dart';
-import '../utils/colors.dart';
-import '../utils/colors.dart';
 import '../widgets/custom_card2.dart';
 import '../widgets/meeting_option.dart';
 
@@ -27,10 +25,6 @@ class _GeneralScreenState extends State<GeneralScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: TextButton(
-          onPressed: () {  },
-            child: Icon(Icons.arrow_back_ios_new,color: Colors.white,)
-        ),
         elevation: 0,
         backgroundColor: backgroundColor,
         title: const Text(

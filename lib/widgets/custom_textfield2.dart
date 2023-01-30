@@ -2,23 +2,28 @@ import 'package:flutter/material.dart';
 
 import '../utils/colors.dart';
 
-class CustomTextField extends StatelessWidget {
-  CustomTextField(
-      {super.key, required this.hintText, this.initialVal, this.onChanged,required this.isReadOnly});
+class CustomTextField2 extends StatelessWidget {
+  CustomTextField2(
+      {super.key,
+      required this.hintText,
+      this.onChanged,
+      // required this.initialVal,
+      required this.isReadOnly,
+      required this.controller});
   String hintText;
-  String? initialVal;
+  // final String initialVal;
   Function(String)? onChanged;
+  final controller;
   bool isReadOnly = false;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 60,
       child: TextFormField(
+        controller: controller,
         readOnly: isReadOnly,
         onChanged: onChanged,
-        
-        initialValue: initialVal ?? "",
-        //controller: meetingIdController,
+        // initialValue: initialVal,
         maxLines: 1,
         decoration: InputDecoration(
           fillColor: secondaryBackgroundColor,

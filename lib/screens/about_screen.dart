@@ -17,10 +17,6 @@ class _AboutScreenState extends State<AboutScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {},
-        ),
         elevation: 0,
         backgroundColor: backgroundColor,
         title: Text(
@@ -29,7 +25,7 @@ class _AboutScreenState extends State<AboutScreen> {
         ),
         centerTitle: true,
       ),
-      body: ListView(children: [
+      body: ListView( children: [
         Container(
           padding: EdgeInsets.all(10),
           decoration: BoxDecoration(color: secondaryBackgroundColor),
@@ -130,17 +126,20 @@ class _AboutScreenState extends State<AboutScreen> {
               text: "Community Standards",
               secondaryText: '',
             )),
-        SizedBox(height: 25),
+        SizedBox(height: 15),
         Column(
           children: [
             Row(
               children: [
-                GestureDetector(
-                  child: Text(
-                    "Open Source Software  ",
-                    style: TextStyle(color: Colors.blue),
+                Container(
+                  padding: EdgeInsets.all(15),
+                  child: GestureDetector(
+                    child: Text(
+                      "Open Source Software  ",
+                      style: TextStyle(color: Colors.blue),
+                    ),
+                    onTap: fun,
                   ),
-                  onTap: fun,
                 ),
                 Icon(
                   Icons.open_in_new,

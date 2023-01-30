@@ -7,6 +7,7 @@ import 'package:zoomclone/screens/edit_meeting_screen.dart';
 import 'package:zoomclone/screens/edit_name.dart';
 import 'package:zoomclone/screens/home_screen.dart';
 import 'package:zoomclone/screens/login_screen.dart';
+import 'package:zoomclone/screens/profile.dart';
 import 'package:zoomclone/screens/start_new_meeting.dart';
 import 'package:zoomclone/screens/create_new_meeting.dart';
 import 'package:zoomclone/screens/update_password.dart';
@@ -28,6 +29,7 @@ Future<void> main() async {
       routes: {
         '/login': (context) => LoginScreen(),
         '/home': (context) => HomeScreen(),
+        '/profile': (context) => Profile(),
       },
       home: AnimatedSplashScreen(
         splash: 'assets/images/loading.png',

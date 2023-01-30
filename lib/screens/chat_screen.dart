@@ -26,7 +26,7 @@ class _ChatScreenState extends State<ChatScreen> {
   List checkListItems = [
     {
       "id": 0,
-      "value": false,
+      "value": true,
       "title": "All messages",
     },
     {
@@ -53,10 +53,6 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: TextButton(
-            onPressed: () {  },
-            child: Icon(Icons.arrow_back_ios_new,color: Colors.white,)
-        ),
         elevation: 0,
         backgroundColor: backgroundColor,
         title: const Text(
@@ -175,6 +171,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 ],
               ),
             ),
+            SizedBox(height: 20,)
           ]
       ),
     );

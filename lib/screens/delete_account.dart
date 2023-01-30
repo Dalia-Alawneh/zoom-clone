@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../resources/auth_methods.dart';
 import '../utils/colors.dart';
 
 class DeleteAccount extends StatefulWidget {
@@ -10,6 +12,10 @@ class DeleteAccount extends StatefulWidget {
 }
 
 class _DeleteAccountState extends State<DeleteAccount> {
+  final AuthMethods _authMethods = AuthMethods();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  User get user => _auth.currentUser!;
+
   var _color = Color.fromARGB(40, 143, 143, 143);
 
   @override
@@ -28,10 +34,13 @@ class _DeleteAccountState extends State<DeleteAccount> {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10), color: _color),
         child: GestureDetector(
-          onTap: () {
-            setState(() {
+          onTap: () async {
+            bool res = await _authMethods.SignInWithGoogle(context);
+            if (res) {
               _color = Color.fromARGB(40, 160, 160, 160);
-            });
+              user.delete();
+              Navigator.pushNamed(context, '/login');
+            }
           },
           child: Text(
             'Delete Account',

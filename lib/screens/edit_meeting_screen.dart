@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:zoomclone/widgets/basic_card.dart';
 import 'package:zoomclone/widgets/custom_text.dart';
 import 'package:zoomclone/widgets/custom_textfield.dart';
+import 'package:zoomclone/widgets/custom_textfield2.dart';
 import 'package:zoomclone/widgets/divline.dart';
 import 'package:zoomclone/widgets/meeting_option.dart';
 
@@ -16,7 +19,24 @@ class EditMeeting extends StatefulWidget {
 }
 
 class _EditMeetingState extends State<EditMeeting> {
-  var _id = '987 475 1071';
+  @override
+  void initState() {
+    super.initState();
+    getMeetings();
+  }
+
+  var _id;
+  final user = FirebaseAuth.instance.currentUser;
+  final _firestore = FirebaseFirestore.instance;
+  void getMeetings() async {
+    final meetings = await _firestore.collection('meetings').get();
+    for (var meeting in meetings.docs) {
+      _id = meeting['id'].toString();
+
+      print(_id);
+    }
+  }
+
   bool isRequired = true;
   bool isEnable = true;
   bool isVideoOn = false;
@@ -32,11 +52,13 @@ class _EditMeetingState extends State<EditMeeting> {
         actions: [
           TextButton(
               onPressed: () {
-                Navigator.pop(context);
+                setState(() {
+                  getMeetings();
+                });
               },
               child: Text(
                 "Save",
-                style: TextStyle(color: Colors.white, fontSize: 17),
+                style: TextStyle(color: Colors.white, fontSize: 15),
               ))
         ],
       ),
@@ -46,7 +68,6 @@ class _EditMeetingState extends State<EditMeeting> {
         ),
         CustomTextField(
           isReadOnly: false,
-
           hintText: "Personal ID",
           initialVal: _id,
         ),

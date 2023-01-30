@@ -13,10 +13,8 @@ environment:
 dependencies:
   google_sign_in:
   cloud_firestore:
-  cupertino_icons: ^1.0.2
   firebase_auth:
   firebase_core:
-  #  jitsi_meet:
   flutter:
     sdk: flutter
   camera: ^0.10.2+1

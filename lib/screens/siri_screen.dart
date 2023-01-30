@@ -13,10 +13,6 @@ class _SiriScreenState extends State<SiriScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {},
-        ),
         elevation: 0,
         backgroundColor: backgroundColor,
         title: const Text(

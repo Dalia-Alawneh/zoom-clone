@@ -128,11 +128,14 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: TextButton(
-            onPressed: () {  },
-            child: Text('Cancle', style: TextStyle(
-              color: Colors.white,
-              fontSize:13,
-            ),),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Icon(
+            Icons.close,
+            color: Colors.white,
+            size: 23,
+          ),
         ),
         elevation: 0,
         backgroundColor: backgroundColor,
@@ -159,18 +162,20 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
                 border: InputBorder.none,
                 hintText: 'Room ID',
                 // suffixIcon: Icon(Icons.arrow_drop_down),
-              contentPadding: EdgeInsets.fromLTRB(16, 0, 0, 0),
+                contentPadding: EdgeInsets.fromLTRB(16, 0, 0, 0),
               ),
             ),
           ),
           GestureDetector(
-            onTap: (){},
-            child: Text('Join with a personal link name',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color.fromRGBO(32, 129, 238, 1.0),
-                  fontSize: 10,
-                ),),
+            onTap: () {},
+            child: Text(
+              'Join with a personal link name',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Color.fromRGBO(32, 129, 238, 1.0),
+                fontSize: 10,
+              ),
+            ),
           ),
           SizedBox(
             height: 15,
@@ -190,25 +195,29 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
           ),
           CustomButton(
             text: 'Join',
-            onPressed: () {  }, // _joinMeeting
+            onPressed: () {}, // _joinMeeting
             bcolor: secondaryBackgroundColor, textBColor: textColor,
           ),
           Padding(
             padding: EdgeInsets.only(left: 10),
-            child: Text('If you recived an invitation link, tab on the link again to join the meeting',
-            style: TextStyle(
+            child: Text(
+              'If you recived an invitation link, tab on the link again to join the meeting',
+              style: TextStyle(
                 fontSize: 13,
                 color: Colors.white54,
-            ),),
+              ),
+            ),
           ),
           const SizedBox(height: 40),
           Padding(
             padding: EdgeInsets.only(left: 10, bottom: 10),
-            child: Text('JOIN OPTIONS',
+            child: Text(
+              'JOIN OPTIONS',
               style: TextStyle(
                 fontSize: 12,
                 color: Colors.white54,
-              ),),
+              ),
+            ),
           ),
           MeetingOption(
             text: "Don't Connect To Audio",

@@ -12,10 +12,7 @@ class Contact extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: TextButton(
-            onPressed: () {  },
-            child: Icon(Icons.arrow_back_ios_new,color: Colors.white,)
-        ),
+        
         elevation: 0,
         backgroundColor: backgroundColor,
         title: const Text(

@@ -24,7 +24,7 @@ class UpdatePassword extends StatelessWidget {
               },
               child: Text(
                 "Save",
-                style: TextStyle(color: Colors.white, fontSize: 17),
+                style: TextStyle(color: Colors.white, fontSize: 15),
               ))
         ],
       ),

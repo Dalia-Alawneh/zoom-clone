@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:zoomclone/screens/create_new_meeting.dart';
 import 'package:zoomclone/screens/schedual_meeting_screen.dart';
 import 'package:zoomclone/screens/video_call_screen.dart';
+import 'package:zoomclone/utils/colors.dart';
 import 'package:zoomclone/widgets/divline.dart';
 import '../main.dart';
 import '../widgets/home_meeting_button.dart';
@@ -15,11 +16,6 @@ class MeetingScreen extends StatefulWidget {
 }
 
 class _MeetingScreenState extends State<MeetingScreen> {
-  createNewMeeting() async {
-    var random = Random();
-    String roomName = (random.nextInt(10000000) + 10000000).toString();
-  }
-
   var _color = Colors.grey;
   @override
   Widget build(BuildContext context) {
@@ -61,6 +57,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
                 context: context,
                 builder: (context) {
                   return AlertDialog(
+                    backgroundColor: secondaryBackgroundColor,
                       title: Text(
                         "Share Screen",
                         textAlign: TextAlign.center,

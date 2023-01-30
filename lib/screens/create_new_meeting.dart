@@ -5,8 +5,11 @@ import 'package:zoomclone/utils/colors.dart';
 import '../json/root_app_json.dart';
 import 'package:zoomclone/main.dart';
 
+// import '../widgets/bottombar.dart';
+
 class CreateNewMeeting extends StatefulWidget {
   final List<CameraDescription>? cameras;
+
   const CreateNewMeeting({this.cameras, Key? key}) : super(key: key);
 
   @override
@@ -15,7 +18,7 @@ class CreateNewMeeting extends StatefulWidget {
 
 class _CameraPageState extends State<CreateNewMeeting> {
   late CameraController controller;
-
+  bool onVideoPress = true;
   @override
   void initState() {
     super.initState();
@@ -31,6 +34,11 @@ class _CameraPageState extends State<CreateNewMeeting> {
     });
   }
 
+  void Video() {
+    onVideoPress = !onVideoPress;
+    setState(() {});
+  }
+
   @override
   void dispose() {
     controller.dispose();
@@ -43,7 +51,7 @@ class _CameraPageState extends State<CreateNewMeeting> {
       backgroundColor: black,
       appBar: getAppBar(),
       bottomNavigationBar: getFooter(),
-      body: getBodyWithCamera(),
+      body: onVideoPress ? getBody() : getBodyWithCamera(),
     );
   }
 
@@ -111,38 +119,52 @@ class _CameraPageState extends State<CreateNewMeeting> {
   Widget getFooter() {
     return Container(
       width: double.infinity,
-      height: 90,
+      height: 95,
       decoration: BoxDecoration(
           color: headerAndFooter,
           border: Border(
               top: BorderSide(width: 2, color: black.withOpacity(0.06)))),
       child: Padding(
-        padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 20),
-        child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: List.generate(bottomItems.length, (index) {
-              return Column(
-                children: [
-                  Icon(
-                    bottomItems[index],
-                    color: colorItems[index],
-                    size: sizedItems[index],
+          padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 20),
+          child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ButtomBar(
+                  icon: Icon(
+                    Icons.mic_off_rounded,
                   ),
-                  SizedBox(
-                    height: 8,
+                  txt: 'Mute',
+                  onPressed: () {},
+                ),
+                ButtomBar(
+                  icon: onVideoPress
+                      ? Icon(Icons.videocam_off)
+                      : Icon(Icons.video_call),
+                  txt: onVideoPress ? 'Join Video' : 'Stop Video',
+                  onPressed: () {
+                    Video();
+                  },
+                ),
+                ButtomBar(
+                  icon: Icon(
+                    Icons.ios_share,
+                    color: Colors.green,
                   ),
-                  Text(
-                    textItems[index],
-                    style: TextStyle(
-                        fontSize: 10,
-                        fontWeight: FontWeight.w600,
-                        color: colorItems[index]),
-                  )
-                ],
-              );
-            })),
-      ),
+                  txt: 'Share Screen',
+                  onPressed: () {},
+                ),
+                ButtomBar(
+                  icon: Icon(Icons.chat_bubble),
+                  txt: 'Chat',
+                  onPressed: () {},
+                ),
+                ButtomBar(
+                  icon: Icon(Icons.more_horiz),
+                  txt: 'More',
+                  onPressed: () {},
+                ),
+              ])),
     );
   }
 
@@ -154,12 +176,12 @@ class _CameraPageState extends State<CreateNewMeeting> {
         ),
       );
     }
-    return Column(children: [
+    return ListView(children: [
       Padding(
         padding: const EdgeInsets.all(8.0),
         child: Center(
           child: SizedBox(
-            height: 595,
+            height: 550,
             width: 420,
             child: CameraPreview(controller),
           ),

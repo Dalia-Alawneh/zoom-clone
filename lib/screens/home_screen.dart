@@ -1,12 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:zoomclone/screens/contacts_screen.dart';
 import 'package:zoomclone/screens/edit_meeting_screen.dart';
-import 'package:zoomclone/screens/settings_screen.dart';
+import 'package:zoomclone/screens/settings_screen.dart' as SettingsScreen;
 import 'package:zoomclone/screens/team_chat.dart';
 import 'package:zoomclone/widgets/appbar.dart';
 import 'package:zoomclone/widgets/dialog_tile.dart';
 import 'package:zoomclone/widgets/home_meeting_button.dart';
-import 'package:zoomclone/screens/history_meeting_screen.dart';
+// import 'package:zoomclone/screens/history_meeting_screen.dart';
 import 'package:zoomclone/screens/meeting_screen.dart';
 import '../main.dart';
 import '../utils/colors.dart';
@@ -22,6 +23,21 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  var _id;
+  final _firestore = FirebaseFirestore.instance;
+  void getMeetings() async {
+    final meetings = await _firestore.collection('meetings').get();
+    for (var meeting in meetings.docs) {
+      _id = meeting['id'].toString();
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getMeetings();
+  }
   int _page = 0;
   int _topic = 0;
   onPageChanged(int page) {
@@ -36,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
     MeetingScreen(),
     const TeamChatScreen(),
     const ContactsScreen(),
-    const Settings(),
+    const SettingsScreen.Settings(),
   ];
 
   @override
@@ -81,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   height: 8,
                                 ),
                                 Text(
-                                  '987 475 101',
+                                  _id,
                                   style:
                                       TextStyle(fontSize: 26, color: textColor),
                                 ),

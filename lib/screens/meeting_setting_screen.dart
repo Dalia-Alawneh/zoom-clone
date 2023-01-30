@@ -32,10 +32,6 @@ class _MeetingSettingScreenState extends State<MeetingSettingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {},
-        ),
         elevation: 0,
         backgroundColor: backgroundColor,
         title: const Text(
@@ -81,13 +77,13 @@ class _MeetingSettingScreenState extends State<MeetingSettingScreen> {
             thickness: 1,
           ),
           CustomAdaptive1(
-            height: 70,
+            height: 80,
             text: 'Use Original Audio ',
             isMute: isOriginalAudio,
             onChange: onOriginalAudioEnable,
             secondaryText:
-                'This will allow you to enable or disable original sound in '
-                ' \na meeting. Original sound will disabled noise suppression.',
+                'This will allow you to enable or in '
+                ' \na meeting. Original.',
           ),
           const Divider(
             indent: 15,

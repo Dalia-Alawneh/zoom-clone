@@ -8,7 +8,6 @@ import '../widgets/meeting_option.dart';
 
 class ScheduleMeetingScreen extends StatefulWidget {
   const ScheduleMeetingScreen({Key? key}) : super(key: key);
-
   @override
   State<ScheduleMeetingScreen> createState() => _ScheduleMeetingScreenState();
 }
@@ -30,12 +29,10 @@ class _ScheduleMeetingScreenState extends State<ScheduleMeetingScreen> {
       appBar: AppBar(
         leading: TextButton(
           onPressed: () {Navigator.pop(context);},
-          child: Text(
-            'Cancle',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 13,
-            ),
+          child: Icon(
+            Icons.close,
+            color: Colors.white,
+            size: 23,
           ),
         ),
         elevation: 0,
@@ -56,7 +53,7 @@ class _ScheduleMeetingScreenState extends State<ScheduleMeetingScreen> {
               'Save',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 13,
+                fontSize: 15,
               ),
             ),
           ),
